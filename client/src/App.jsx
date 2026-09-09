@@ -381,14 +381,14 @@ function AuthScreen({ auth }) {
 
         {mode === "signup" && (
           <>
-            <Field label="Business name"><TextInput value={form.businessName} onChange={set("businessName")} placeholder="CMFS Gutter Services" /></Field>
-            <Field label="Your name"><TextInput value={form.ownerName} onChange={set("ownerName")} placeholder="Cris" /></Field>
-            <Field label="Phone (optional)"><TextInput value={form.phone} onChange={set("phone")} placeholder="(810) 333-1636" /></Field>
+            <Field label="Business name"><TextInput value={form.businessName} onChange={set("businessName")} placeholder="CMFS Gutter Services" autoComplete="off" /></Field>
+            <Field label="Your name"><TextInput value={form.ownerName} onChange={set("ownerName")} placeholder="Cris" autoComplete="off" /></Field>
+            <Field label="Phone (optional)"><TextInput value={form.phone} onChange={set("phone")} placeholder="(810) 333-1636" autoComplete="off" /></Field>
           </>
         )}
-        <Field label="Email"><TextInput type="email" value={form.email} onChange={set("email")} placeholder="you@business.com" /></Field>
+        <Field label="Email"><TextInput type="email" value={form.email} onChange={set("email")} placeholder="you@business.com" autoComplete={mode === "signup" ? "off" : "email"} /></Field>
         <Field label="Password" hint={mode === "signup" ? "At least 8 characters" : undefined}>
-          <TextInput type="password" value={form.password} onChange={set("password")} placeholder="••••••••" />
+          <TextInput type="password" value={form.password} onChange={set("password")} placeholder="••••••••" autoComplete={mode === "signup" ? "new-password" : "current-password"} />
         </Field>
 
         <Button onClick={submit} disabled={loading} variant="primary" style={{ width: "100%", justifyContent: "center", marginTop: 4 }}>
